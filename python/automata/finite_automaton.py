@@ -36,7 +36,7 @@ def finite_automaton(
         random_seed = random.random()
 
     if isinstance(automaton, str):
-        automaton = load_representation("finiteautomata", automaton)
+        automaton = load_representation("python/automata/finiteautomata", automaton)
         if automaton is None:
             raise ValueError(f"Automaton '{automaton}' not found.")
 

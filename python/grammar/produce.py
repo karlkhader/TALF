@@ -23,7 +23,7 @@ def produce(
     output_format: str = "text",
     seed: Optional[Sequence[float]] = None,
     *,
-    database_path: str = "software/grammar/grammars",
+    database_path: str = "python/grammar/grammars",
 ) -> List[str]:
     """
     Produce strings in L(G) after derivations bounded by max_derivation.

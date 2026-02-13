@@ -3,7 +3,7 @@ Return the Extended WHILE program corresponding to a recursive function.
 
 Examples:
     >>> rec_to_while_ext('<π^1_1|σ(π^3_3)>', 2)
-    >>> rec_to_while_ext('predecessor', 1)
+    >>> sys.stdout.write(rec_to_while_ext('predecessor', 1))
 """
 
 from __future__ import annotations

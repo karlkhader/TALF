@@ -19,7 +19,7 @@ def pretty_print_grammar(
     grammar: Union[str, Grammar],
     output_format: str = "text",
     *,
-    database_path: str = "software/grammar/grammars",
+    database_path: str = "python/grammar/grammars",
 ) -> Grammar:
     """Print a formatted grammar and return the grammar object."""
     arrow = "→"

@@ -19,7 +19,7 @@ from python.util import load_representation
 def f_emulation(whileprogram: str, *args: int) -> int:
     """Emulate a WHILE program by translating it into Python code."""
     if not whileprogram.startswith("("):
-        whileprogram = load_representation("software/Whilelanguage/Whileprograms", whileprogram)
+        whileprogram = load_representation("python/whilelanguage/Whileprograms", whileprogram)
         if whileprogram is None:
             raise ValueError("While program not found in database.")
 
@@ -33,10 +33,10 @@ def f_emulation(whileprogram: str, *args: int) -> int:
 
     code = code.replace("≔", "=")
     code = code.replace(":=", "=")
-    code = code.replace("≠0", "!=0 ")
-    code = code.replace("while", "while ")
-    code = code.replace("do", "")
-    code = code.replace("od", ";")
+    code = code.replace("≠0", "!=0")
+    code = code.replace("while", "while")
+    code = code.replace("do ", ": ")
+    code = code.replace("od", ";end;")
 
     code = _macrosentence_rep(code)
 
@@ -44,7 +44,8 @@ def f_emulation(whileprogram: str, *args: int) -> int:
         code = f"X{index}={value};" + code
 
     locals_dict = {"X1": 0, "X2": 0, "X3": 0}
-    exec(_to_python(code), {}, locals_dict)
+    exec(_to_python(code), globals(), locals_dict)
+    #exec(_to_python(code), {}, locals_dict)
 
     return locals_dict.get("X1", 0)
 
@@ -58,7 +59,7 @@ def _macrosentence_rep(code: str) -> str:
         if assign_index == -1:
             continue
         name = code[assign_index + 1 : start]
-        code = f"{code[:assign_index]}f_emulation('{name}', {code[start+1:]}"
+        code = f"{code[:assign_index+1]}f_emulation('{name}',{code[start+1:]}"
     return code
 
 
@@ -70,8 +71,12 @@ def _to_python(code: str) -> str:
     indent = 0
     for segment in lines:
         if segment.startswith("while"):
-            python_lines.append("    " * indent + segment + ":")
+            divided_line = segment.split(" ")
+            python_lines.append("    " * indent + " ".join(divided_line[:-1]))
             indent += 1
+            python_lines.append("    " * indent + divided_line[-1])
+        elif segment.startswith("end"):
+            indent -= 1
         else:
             python_lines.append("    " * indent + segment)
     return "\n".join(python_lines)

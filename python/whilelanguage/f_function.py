@@ -3,6 +3,7 @@ Mathematical function computed by a WHILE program.
 
 Example:
     >>> f_function("(1, X2≔X1; while X2≠0 do X1≔X1+1; X2≔X2-1 od)", [10])
+    20
 """
 
 from __future__ import annotations

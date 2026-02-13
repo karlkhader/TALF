@@ -3,7 +3,7 @@ Gödel numbering for vectors of numbers (ℕ* -> ℕ).
 
 Example:
     >>> godelencoding(4, 10, 2)
-    6674029
+    23863684
 """
 
 from __future__ import annotations

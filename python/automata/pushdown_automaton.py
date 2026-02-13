@@ -46,7 +46,7 @@ def pushdown_automaton(
         rng = random.Random()
 
     if isinstance(automaton, str):
-        automaton = load_representation("pushdownautomata", automaton)
+        automaton = load_representation("python/automata/pushdownautomata", automaton)
         if automaton is None:
             raise ValueError(f"Automaton '{automaton}' not found.")
 

@@ -41,7 +41,10 @@ def next_configuration(whileprogram: str, configuration: List[int]) -> List[int]
     else:
         next_line = linenumber + 1
         next_vars = variables[:]
-        numbers = re.findall(r"\d+", whileline)
+        #numbers = re.findall(r"\d+", whileline)
+        matches = list(re.finditer(r"\d+", whileline))
+        numbers = [m.group() for m in matches]  # mismos strings que findall
+        positions = [m.start() for m in matches]  # índices iniciales
         i = int(numbers[0])
         if len(numbers) < 2:
             next_vars[i - 1] = 0
@@ -50,7 +53,8 @@ def next_configuration(whileprogram: str, configuration: List[int]) -> List[int]
             if len(numbers) == 2:
                 next_vars[i - 1] = next_vars[j - 1]
             else:
-                assignment_sign = whileline[whileline.find(numbers[1]) + len(numbers[1])]
+                #assignment_sign = whileline[whileline.find(numbers[1]) + len(numbers[1])]
+                assignment_sign = whileline[positions[2]-1]
                 delta = 1 if assignment_sign == "+" else -1
                 next_vars[i - 1] = max(next_vars[j - 1] + delta, 0)
 

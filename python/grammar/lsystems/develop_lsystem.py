@@ -21,7 +21,7 @@ def develop_lsystem(
     lsystem: Union[str, LSystem],
     iterations: int = 3,
     *,
-    database_path: str = "software/grammar/grammars",
+    database_path: str = "python/grammar/grammars",
     output_path: str | None = None,
 ) -> str:
     """Develop an L-system for a number of iterations and draw the result."""

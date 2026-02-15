@@ -24,8 +24,11 @@ def cal(whileprogram: str, inputvariables: int | List[int], steps: int) -> List[
         input_list = list(inputvariables)
 
     if steps == 0:
+        ## initial configuration
+        ## find out the number of input variables
         numbers = re.findall(r"\d+", whileprogram)
         n = int(numbers[0])
+        ## find out the total number of variables
         p = max(int(value) for value in numbers)
         configuration = [1, *input_list, *([0] * (p - n))]
         return configuration

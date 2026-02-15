@@ -1,9 +1,13 @@
 """
-Pop the first instruction from a Gödel-encoded list.
+list = pop(list)
+
+list is a Gödel number that stores a vector of instructions encoded as numbers
 
 Example:
     >>> pop(20)
     3
+    
+    since godelencoding(1,1) = 20 and godelencoding(1) = 3
 """
 
 from __future__ import annotations
@@ -14,10 +18,12 @@ from python.whilelanguage.encoding.godelencoding import godelencoding
 
 def pop(value: int) -> int:
     """Return the Gödel encoding of a list without its first element."""
+    # auxiliary variables set to zero
     x2 = 0
     x3 = 0
     x4 = 0
 
+    # code
     x4 = value
     if x4 == 1:
         x2 = 0

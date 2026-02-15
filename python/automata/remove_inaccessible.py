@@ -39,7 +39,7 @@ Furthermore, json file can contain one automaton or more. That is the reason
 why the input parameters are two: 
   IN:
       automatadatabasename : file's name without file's extension 
-                             (FOr example: if it's called "dfa.json", then 
+                             (For example: if it's called "dfa.json", then 
                               we'll introduce automatadatabasename as dfa)
       automatonname : automaton's name. 
 
@@ -79,7 +79,7 @@ def dfa_without_inaccessible_states(
         if transition[0] in accessible and transition[2] in accessible
     ]
 
-    ## Copy new automaton using the previosly defined form in sol
+    ## Copy new automaton using the previously defined form in sol
     new_automaton = {
         "K": sorted(accessible),
         "A": automaton["A"],

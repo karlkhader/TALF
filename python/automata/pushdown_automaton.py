@@ -170,8 +170,7 @@ def _label_outcome(configuration: Configuration, automaton: Automaton) -> str:
         if state in automaton["F"]:
             return ACCEPT_LABEL
         ## terminal state is not a final state
-        else:
-            return REJECT_LABEL
+        return REJECT_LABEL
     ## input string or stack are not empty
     return BLOCKED_LABEL
 

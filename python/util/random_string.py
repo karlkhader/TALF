@@ -1,4 +1,7 @@
-"""Generate a random string based on Octave's randomstring.m logic."""
+"""Generate a random string based on Octave's randomstring.m logic.
+
+make a string according to a pattern ('N', 'T', 'V+', 'V*')
+"""
 
 from __future__ import annotations
 
@@ -10,13 +13,18 @@ from typing import Optional
 def _symbol_to_set(symbol: str, middlesymbol: int = 13) -> str:
     """Map a symbol into a target set label (T, N, V+, V*)."""
     if symbol in string.ascii_lowercase[:middlesymbol]:
+        # a, b, c, d
         return "T"
     if symbol in string.ascii_lowercase[middlesymbol:]:
+        # w, x, y, z
         return "V*"
     if symbol in string.ascii_uppercase[:middlesymbol]:
+        # A, B, C, D
         return "N"
     if symbol == "α":
+        # α
         return "V+"
+    # β, γ
     return "V*"
 
 
@@ -43,9 +51,11 @@ def random_string(
     """
     rng = rng or random
     epsilon = "ε"
+    # set of all terminal and non-terminal symbols
     alphabet = ""
 
     if targetset and targetset[0] not in "NTV":
+        # set is given by a letter, instead
         targetset = _symbol_to_set(targetset)
 
     if targetset.startswith("T"):
@@ -55,16 +65,21 @@ def random_string(
     elif targetset.startswith("V"):
         alphabet = f"{non_terminals}{terminals}"
 
+    # determine output length
     if len(targetset) == 1:
         string_length = 1
     elif len(targetset) > 1 and targetset[1] == "+":
+        # empty string is not allowed
         string_length = rng.randint(1, max_string_length)
     else:
+        # empty string is allowed
         string_length = rng.randint(0, max_string_length)
 
     if string_length == 0:
+        # empty string
         return epsilon
     if not alphabet:
         raise ValueError("Alphabet is empty; cannot generate a non-empty string.")
 
+    # non-empty string
     return "".join(rng.choice(alphabet) for _ in range(string_length))

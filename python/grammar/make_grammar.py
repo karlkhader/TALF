@@ -49,16 +49,11 @@ def make_grammar(type_grammar: int, N: Iterable[str] | None = None, T: Iterable[
     rules: List[List[str]] = []
     for rule_type_value in ruletypes:
         while True:
-            # case of regular grammar
-            if type_grammar == 3:
-                # make sure the rule fits that type
-                rule = make_rule(rule_type_value, N=N_list, T=T_list, show_rule=False)
-                if rule.type.name not in {type3, "terminal-regular"}:
-                    continue
-            else:
-                # rules of types 0, 1 and 2
-                rule = make_rule(rule_type_value, N=N_list, T=T_list, show_rule=False)
-            
+            # case of regular grammar: make sure the rule fits that type
+            # rules of types 0, 1 and 2 also handled here
+            rule = make_rule(rule_type_value, N=N_list, T=T_list, show_rule=False)
+            if type_grammar == 3 and rule.type.name not in {type3, "terminal-regular"}:
+                continue
             # check if rule already exists
             if not any(existing[0] == rule.side[0] and existing[1] == rule.side[1] for existing in rules):
                 rules.append([rule.side[0], rule.side[1]])

@@ -1,4 +1,22 @@
-"""Convert a context-free grammar (CFG) to a nondeterministic PDA."""
+"""Convert a context-free grammar (CFG) to a nondeterministic PDA.
+
+Finds an NPA equivalent to a given CFG.
+
+
+For example:
+
+   >> finiteautomaton("aa*bb*", "ab")
+
+   M = ( {q0, q1, q2}, {a, b}, {(q0, a, q1), (q1, a, q1), (q1, b, q2), (q2, b, q2)}, q0, {q0, q1, q2} )
+
+   w = ab
+
+   (q0, ab) ⊢ (q1, b) ⊢ (q2, ε)
+
+   w ∈ 𝓛(M)
+
+   >> finiteautomaton("aa*bb*", "ab", "LaTeX")
+"""
 
 from __future__ import annotations
 
@@ -28,6 +46,12 @@ def cfg_to_npa(grammar: Grammar) -> Automaton:
         "t": [],
     }
 
+    # STATES
+    # STRING ALPHABET
+    # STACK ALPHABET
+    # INITIAL STATE
+    # FINAL STATE
+    # TRANSITION RELATION
     # Initial transition pushes the start symbol.
     automaton["t"].append([["q0", "ε", "ε"], ["q1", grammar["S"]]])
 

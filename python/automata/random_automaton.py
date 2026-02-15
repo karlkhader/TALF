@@ -1,4 +1,27 @@
-"""Generate random automata for experiments."""
+"""Generate random automata for experiments.
+
+optional: automatontype, probabilityfinalstate
+
+Generates a random automaton and its graph in DOT format.
+The automaton can be either DFA, NFA or NPDA, and it is
+defined in a JSON file (for further use), like this:
+
+  {
+    "K" : ["q0", "q1", "q2"],
+    "A" : ["a", "b"],
+    "s" : "q0",
+    "F" : ["q2"],
+    "t" : [["q0", "a", "q1"],
+           ["q1", "a", "q1"],
+           ["q1", "b", "q2"],
+           ["q2", "b", "q2"]]
+  }
+
+examples
+  randomautomaton({'0', '1'}, 5)
+  randomautomaton({'a', 'b', 'c'}, 8, 'NFA')
+  randomautomaton({'|'}, 10, 'DFA', 0.3)
+"""
 
 from __future__ import annotations
 
@@ -29,21 +52,28 @@ def random_automaton(
     options = options or RandomAutomatonOptions()
     automaton_type = options.automaton_type
 
+    # determine if DFA (default), NFA or NPDA
     if automaton_type not in {"DFA", "NFA", "NPDA"}:
         raise ValueError("automaton_type must be 'DFA', 'NFA', or 'NPDA'")
 
+    # create list of states and final states
     states = [f"q{idx}" for idx in range(number_states)]
     final_states = [state for state in states if random.random() > options.probability_final_state]
+    # make the first final if no one selected
     if not final_states:
         final_states = [states[0]]
 
+    # create transitions
     transitions: List[List[str]] = []
 
     if automaton_type == "DFA":
+        # DFA's transition function
         for state in states:
             for symbol in alphabet:
                 transitions.append([state, symbol, random.choice(states)])
     elif automaton_type == "NFA":
+        # NFA's transition application
+        # transitions as a Poissonian function of number of states
         number_transitions = _poisson(options.mean_transitions_factor * len(states))
         for _ in range(number_transitions):
             transitions.append(
@@ -54,6 +84,8 @@ def random_automaton(
                 ]
             )
     else:
+        # NPDA's transition application
+        # transitions as a Poissonian function of number of states
         number_transitions = _poisson(options.mean_transitions_factor * len(states))
         for _ in range(number_transitions):
             transitions.append(
@@ -64,6 +96,7 @@ def random_automaton(
                 ]
             )
 
+    # create automaton
     automaton = {
         "K": states,
         "A": list(alphabet),
@@ -82,9 +115,12 @@ def save_random_automaton(automaton: Dict[str, object], filename: str) -> None:
 
 
 def _random_string(alphabet: Sequence[str], options: RandomAutomatonOptions) -> str:
+    # generate a random string
+    # length of string with Poissonian distribution
     length = _poisson(options.mean_string_length)
     if length == 0:
         return options.empty_string
+    # generate random indexes and get symbols from alphabet
     return "".join(random.choice(alphabet) for _ in range(length))
 
 

@@ -2,8 +2,8 @@
 Numbering of an individual sentence
 
 example
-  >> N2sent(192509)
-  ans =  while X2=0 do X2≔X2+1 od
+  >>> n2sent(192509)
+  'while X2=0 do X2≔X2+1 od'
 
 Example:
     >>> n2sent(192509)

@@ -3,10 +3,8 @@ cantordecoding(z, n, k) returns the kth element of the n-tuple encoded by z
 cantordecoding(z, n)    returns the n-tuple encoded by z
 
 example
-  >> cantordecoding(313613413, 4)
-  ans =
-  
-     1       0      10   24967
+  >>> cantordecoding(313613413, 4)
+  [1, 0, 10, 24967]
 
 Example:
     >>> cantordecoding(313613413, 4)

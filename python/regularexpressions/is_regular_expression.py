@@ -9,11 +9,11 @@ Check if a string is a regular expression over a given alphabet.
 #
 # Examples:
 #
-#   is_regular_expression('01','((10)01)')
-#   ans = 0
+#   >>> is_regular_expression('01','((10)01)')
+#   False
 # 
-#   is_regular_expression('01','((10)+(01)**)')
-#   ans = 1
+#   >>> is_regular_expression('01','((10)+(01)**)')
+#   True
 
 Examples:
     >>> is_regular_expression('01', '((10)01)')

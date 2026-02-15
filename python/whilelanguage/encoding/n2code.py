@@ -2,8 +2,8 @@
 Bijection ℕ -> CODE
 
 example
-  >> N2CODE(4)
-  ans = X1≔X1; X1≔0
+  >>> n2code(4)
+  'X1≔X1; X1≔0'
 
 Example:
     >>> n2code(4)

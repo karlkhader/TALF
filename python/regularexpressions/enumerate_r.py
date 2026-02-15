@@ -14,7 +14,7 @@ Enumerate regular expressions over a given alphabet.
 # Examples:
 #
 #   list all regular expressions (take your time!)
-#   enumerate_r('01');
+#   >>> enumerate_r('01')
 #        0   ∅
 #        1   0
 #        2   1
@@ -30,7 +30,7 @@ Enumerate regular expressions over a given alphabet.
 #       ...
 #   
 #   list the first n regular expressions
-#   enumerate_r('01', 5);
+#   >>> enumerate_r('01', 5)
 #      0   ∅
 #      1   0
 #      2   1
@@ -39,22 +39,22 @@ Enumerate regular expressions over a given alphabet.
 #      5   ∅*
 # 
 #   find the index of a regular expression
-#   enumerate_r('01', '((∅∅)+(∅+∅))');
+#   >>> enumerate_r('01', '((∅∅)+(∅+∅))')
 #   100   ((∅∅)+(∅+∅))
 #
-#   enumerate_r('01', '(01)*', 'search', False)
-#   ans = 86
+#   >>> enumerate_r('01', '(01)*', 'search', False)
+#   86
 #
 #   regular expression with index 10000
-#   enumerate_r('01', 10000, 'index');
+#   >>> enumerate_r('01', 10000, 'index')
 #   10000   ((0*+0)+(∅∅)*)
 #
-#   enumerate_r('01', 10000, 'index', False)
-#   ans = ((0*+0)+(∅∅)*)
+#   >>> enumerate_r('01', 10000, 'index', False)
+#   '((0*+0)+(∅∅)*)'
 #
 #   return the first 5 regular expressions, do not print them
-#   enumerate_r('01', 5, 'list', False)
-#   ans = ['∅', '0', '1', '(∅∅)', '(∅+∅)', '∅*']
+#   >>> enumerate_r('01', 5, 'list', False)
+#   ['∅', '0', '1', '(∅∅)', '(∅+∅)', '∅*']
 
 Examples:
     >>> enumerate_r('01', 5)

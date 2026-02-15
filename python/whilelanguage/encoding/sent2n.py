@@ -2,8 +2,8 @@
 Numbering of an individual sentence
 
 example
-  >> sent2N("while X1≠0 do X1≔X1-1; X2≔X2+1 od")
-  ans =  9325236374
+  >>> sent2n("while X1≠0 do X1≔X1-1; X2≔X2+1 od")
+  9325236374
 
 Example:
     >>> sent2n("while X1≠0 do X1≔X1-1; X2≔X2+1 od")

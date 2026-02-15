@@ -2,8 +2,8 @@
 Godel numbering for vectors of numbers of arbitrary length (ℕ* -> ℕ)
 
 example
-  >> godelencoding(4, 10, 2)
-  ans =  6674029
+  >>> godelencoding(4, 10, 2)
+  23863684
 
 Example:
     >>> godelencoding(4, 10, 2)

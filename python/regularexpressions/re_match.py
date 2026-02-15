@@ -29,10 +29,10 @@ Find strings matching a given regular-expression pattern (no overlaps).
 #
 #    To generate a random string over an alphabet, this line will suffice:
 #
-#    >> import random; ''.join(random.choice('01') for _ in range(5))
-#    ans = 10110
-#    >> import random; ''.join(random.choice('ATCG') for _ in range(10))
-#    ans = TTTATGGGCA
+#    >>> import random; ''.join(random.choice('01') for _ in range(5))
+#    '10110'
+#    >>> import random; ''.join(random.choice('ATCG') for _ in range(10))
+#    'TTTATGGGCA'
 #
 #   It can also be invoked with a textfile name (newline characters are ignored).
 

@@ -2,15 +2,16 @@
 Left-hand side of an encoded instruction
 
 example
-  >> z = sent2N("while X1≠0 do X1≔X1-1; X2≔X2+1 od")
-  ans =  9325236374
-  >> lhs(9325236374)
-  ans =  1
+  >>> z = sent2n("while X1≠0 do X1≔X1-1; X2≔X2+1 od")
+  >>> z
+  9325236374
+  >>> lhs(9325236374)
+  1
 
-  >> sent2N("X3≔X2+1")
-  ans =  37
-  >> lhs(37)
-  ans =  3
+  >>> sent2n("X3≔X2+1")
+  37
+  >>> lhs(37)
+  3
 
 Example:
     >>> lhs(37)

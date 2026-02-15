@@ -2,10 +2,11 @@
 Type of a sentence
 
 example
-  >> z = sent2N("while X1=0 do X1≔X1-1; X2≔X2+1 od")
-  z =  9325236374
-  >> senttype(z)
-  ans =  4
+  >>> z = sent2n("while X1=0 do X1≔X1-1; X2≔X2+1 od")
+  >>> z
+  9325236374
+  >>> senttype(z)
+  4
 
 Example:
     >>> senttype(9325236374)

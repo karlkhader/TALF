@@ -3,8 +3,8 @@ Cantor encoding for a vector of numbers of a given length:
    cantorenconding(x_1, ..., x_n)
 
 example
-  >> cantorencoding(3, 1, 2, 1)
-  ans =  5566
+  >>> cantorencoding(3, 1, 2, 1)
+  5566
 
 Example:
     >>> cantorencoding(3, 1, 2, 1)

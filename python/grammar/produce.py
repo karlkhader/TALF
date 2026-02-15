@@ -10,7 +10,7 @@ outputformat : "text" (default) / "string" / "stringLaTeX" / "none"
 
 Ejemplos:
 
-produce('oddlength', 1);
+>>> produce('oddlength', 1)
 (
   {A, B},
   {@},
@@ -24,7 +24,7 @@ produce('oddlength', 1);
 
 A => @B => @@A => @@@B => @@@@A => @@@@@B => @@@@@@A => @@@@@@@B => @@@@@@@@A =>
 @@@@@@@@@B => @@@@@@@@@@A => @@@@@@@@@@@B => @@@@@@@@@@@@A => @@@@@@@@@@@@@
-ans = @@@@@@@@@@@@@
+@@@@@@@@@@@@@
 
 Examples:
     >>> produce("oddlength", 1)

@@ -2,8 +2,8 @@
 Biyection ℕ -> WHILE
 
 example
-  >> N2WHILE(150)
-  ans = (2, while X1≠0 do X1≔0 od)
+  >>> n2while(150)
+  '(2, while X1≠0 do X1≔0 od)'
 
 Example:
     >>> n2while(150)

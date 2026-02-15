@@ -6,9 +6,6 @@ Union of two relations.
 ## examples
 ##   {(a, b), (c, c)} ∪ {(b, a)}
 ##   union_relation([("a", "b"), ("c", "c")], [("b", "a")])
-##
-## 2023/01/31 version 0.1 - fjvico@uma.es  GNU GPL v3.0
-## 2018/09/29 version 0.0 - fjvico@uma.es  GNU GPL v3.0
 
 Examples:
     >>> union_relation([("a", "b"), ("c", "c")], [("b", "a")])

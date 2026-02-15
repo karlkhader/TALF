@@ -35,16 +35,6 @@ Find strings matching a given regular-expression pattern (no overlaps).
 #    ans = TTTATGGGCA
 #
 #   It can also be invoked with a textfile name (newline characters are ignored).
-#
-# ===============================================================
-#
-#   fjv, 30/09/2023  some bugs fixed, output formatted to align
-#   fjv, 25/09/2023  substrings removed
-#   fjv, 13/10/2019  substrings argument added
-#   fjv, 22/10/2018  returns multiple occurrencies of a pattern
-#   fjv, 21/10/2018  GNU GPL v3.0
-#
-# ===============================================================
 
 Examples:
     >>> re_match('10001 0000 100000001 11 11', '10*1')

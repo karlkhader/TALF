@@ -18,9 +18,6 @@ Power n of a relation or its transitive closure.
 ##   
 ##   Ordered pairs can also be formatted like this:
 ##   power_relation(["ab", "cc", "ba"]);
-##
-## 2023/01/31 version 0.1 - fjvico@uma.es  GNU GPL v3.0
-## 2018/09/29 version 0.0 - fjvico@uma.es  GNU GPL v3.0
 
 Examples:
     >>> power_relation([("a", "b"), ("c", "c"), ("b", "a")], 3)

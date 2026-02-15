@@ -8,8 +8,6 @@ Formatted print out of a relation.
 ##   R = [("a", "b"), ("c", "c")]
 ##   pretty_print_relation(R)
 ##   pretty_print_relation(R, newline=True)
-##
-## 2023/01/31 version 0.0 - fjvico@uma.es  GNU GPL v3.0
 
 Examples:
     >>> relation = [("a", "b"), ("c", "c")]

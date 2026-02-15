@@ -55,12 +55,6 @@ Enumerate regular expressions over a given alphabet.
 #   return the first 5 regular expressions, do not print them
 #   enumerate_r('01', 5, 'list', False)
 #   ans = ['∅', '0', '1', '(∅∅)', '(∅+∅)', '∅*']
-# 
-# ===============================================================
-#
-#   fjv, 07/10/2023  GNU GPL v3.0
-#
-# ===============================================================
 
 Examples:
     >>> enumerate_r('01', 5)

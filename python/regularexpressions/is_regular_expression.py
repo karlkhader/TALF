@@ -14,12 +14,6 @@ Check if a string is a regular expression over a given alphabet.
 # 
 #   is_regular_expression('01','((10)+(01)**)')
 #   ans = 1
-# 
-# ===============================================================
-#
-#   fjv, 10/10/2023  GNU GPL v3.0
-#
-# ===============================================================
 
 Examples:
     >>> is_regular_expression('01', '((10)01)')

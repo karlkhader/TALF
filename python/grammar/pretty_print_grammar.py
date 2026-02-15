@@ -90,31 +90,17 @@ def pretty_print_grammar(
         print(f"{space}{space}{grammar['S']}")
         print(")")
     elif output_format == "string":
-        print("( ", end="")
-        ## print N
+        ## print N, T, P, S
         n = ", ".join(grammar["N"])
-        print(f"{{{n}}}, ", end="")
-        ## print T
         t = ", ".join(grammar["T"])
-        print(f"{{{t}}}, ", end="")
-        ## print P
         rules = ", ".join(f"({left}, {right or epsilon})" for left, right in grammar["P"])
-        print(f"{{ {rules} }}, ", end="")
-        ## print S
-        print(f"{grammar['S']} )")
+        print(f"( {{{n}}}, {{{t}}}, {{ {rules} }}, {grammar['S']} )")
     elif output_format == "stringLaTeX":
-        print("$$( ", end="")
-        ## print N
+        ## print N, T, P, S
         n = ", ".join(grammar["N"])
-        print(f"\\{{{n}\\}}, ", end="")
-        ## print T
         t = ", ".join(grammar["T"])
-        print(f"\\{{{t}\\}}, ", end="")
-        ## print P
         rules = ", ".join(f"({left}, {right or epsilon})" for left, right in grammar["P"])
-        print(f"\\{{{rules}\\}}, ", end="")
-        ## print S
-        print(f"{grammar['S']} )$$")
+        print(f"$$( \\{{{n}\\}}, \\{{{t}\\}}, \\{{{rules}\\}}, {grammar['S']} )$$")
     else:
         raise ValueError("Wrong output format...")
 

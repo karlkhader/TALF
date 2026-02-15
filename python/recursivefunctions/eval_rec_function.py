@@ -10,9 +10,6 @@ Examples:
     2
     >>> eval_rec_function('<theta|pi^2_2>', 2)
     0
-
-fjv 20181216 GNU GPL v3.0
-fjv 20181217 projection functions with super- and subscripts
 """
 
 from __future__ import annotations

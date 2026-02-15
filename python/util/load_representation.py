@@ -37,8 +37,6 @@ Example of a finite automata database:
 ]
 
 automaton = loadrepresentation(automatadatabasename, automatonname)
-
-fjv, 02/01/2022   GNU GPL v3.0
 """
 
 from __future__ import annotations

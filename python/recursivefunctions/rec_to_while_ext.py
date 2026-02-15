@@ -43,12 +43,6 @@ Examples:
          X1 := X1+1
 
     >>> sys.stdout.write(rec_to_while_ext('predecessor', 1))
-
-jas 20220220 GNU GPL v3.0
-
-TBD: extract general-purpose functions with other scripts
-TBD: reduce blank lines in the output
-TBD: eliminate commented lines in the code
 """
 
 from __future__ import annotations

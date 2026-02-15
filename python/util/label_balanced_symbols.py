@@ -21,8 +21,6 @@ example
   l =
   
      1   2  -2   2  -2  -1
-
- fjv 20181217 GNU GPL v3.0
 """
 
 from __future__ import annotations

@@ -9,8 +9,6 @@ Examples:
     <σ(<θ|π^2_2>)|<<θ|π^2_2>|<π^1_1|σ(π^3_3)>(π^3_1,π^3_3)>(π^3_1,π^3_3)>
     >>> recursive_expression('<π_1^1|π_3^1>', 'LaTeX')
     $<π_1^1|π_3^1>$
-
-fjv 20181216 GNU GPL v3.0
 """
 
 from __future__ import annotations

@@ -1,5 +1,5 @@
 """
-Check the successor binary Turing machine.
+checkturingmachine
 
 Example:
     >>> check_turingmachine()

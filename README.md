@@ -1,15 +1,8 @@
-This project comprises **lectures notes** for the classroom (LaTeX code) and exams, as 
-well as **scripts** (GNU Octave code) to simulate several models explained 
-in the subject of Theory of Automata and Formal Languages.
+# Theory of Automata and Formal Languages
 
-You can freely download and modify the LaTeX and Octave code.
+This project comprises **material** for the classroom and exams, as 
+well as **scripts** (Python code) to simulate several models explained in the subject of Theory of Automata and Formal Languages.
 
-The PDF file for the lecture notes is compiled with this command (or alternatively use the `./render.sh` script):
+You can freely download and modify the source code.
 
-```
-$ lualatex --shell-escape talflecturenotes.tex
-```
-which demands the Tex Live LaTeX distribution:
-```
-$ sudo apt-get install texlive-full
-```
+You need to run the code in a Python environment.

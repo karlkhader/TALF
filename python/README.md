@@ -1,11 +1,11 @@
-# Python port (work in progress)
+# Python folder
 
 This repository comprises **scripts** (Python code) to simulate several models explained 
 in the subject of Theory of Automata and Formal Languages.
 
 You can freely download and modify the Python code.
 
-## Status
+## Modules
 
 - `util/`: initial helpers ported from Octave (random string generation, JSON
   representation loader, balanced symbol labeling).

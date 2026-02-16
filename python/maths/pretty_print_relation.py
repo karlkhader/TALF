@@ -1,6 +1,14 @@
 """
 Formatted print out of a relation.
 
+## Formatted print out of a relation
+##   R is a relation, newline is an optional boolean (false by default)
+##
+## examples
+##   R = [("a", "b"), ("c", "c")]
+##   pretty_print_relation(R)
+##   pretty_print_relation(R, newline=True)
+
 Examples:
     >>> relation = [("a", "b"), ("c", "c")]
     >>> pretty_print_relation(relation)
@@ -20,6 +28,7 @@ def pretty_print_relation(relation: Sequence[Sequence[str]], newline: bool = Fal
     open_bracket = "{"
     close_bracket = "}"
 
+    ## pretty output
     if not relation:
         print("∅", end="\n" if newline else "")
         return

@@ -1,5 +1,7 @@
 """
-Mathematical function computed by a WHILE program (emulated).
+Mathematical function computed by a WHILE program.
+
+In case of error in the WHILE code, it raises the wrong Octave code.
 
 Examples:
     >>> f_emulation("(1, X2≔X1; while X2≠0 do X1≔X1+1; X2≔X2-1 od)", 3)
@@ -18,19 +20,27 @@ from python.util import load_representation
 
 def f_emulation(whileprogram: str, *args: int) -> int:
     """Emulate a WHILE program by translating it into Python code."""
+    ## check if the program is given explicitly or as a macrosentence
     if not whileprogram.startswith("("):
+        ## case that the program is in the database
         whileprogram = load_representation("python/whilelanguage/Whileprograms", whileprogram)
         if whileprogram is None:
             raise ValueError("While program not found in database.")
 
+    ## extract n
+    ## extract all numbers
     numbers = re.findall(r"\d+", whileprogram)
+    ## n is the first number
     n = int(numbers[0])
+    ## check function arity
     if n != len(args):
         raise ValueError("Function's arity must match the number of arguments...")
 
+    ## extract code
     code = whileprogram.split(",", 1)[1].strip()
     code = code.strip("()")
 
+    ## translate WHILE code into a Python script
     code = code.replace("≔", "=")
     code = code.replace(":=", "=")
     code = code.replace("≠0", "!=0")
@@ -40,10 +50,13 @@ def f_emulation(whileprogram: str, *args: int) -> int:
 
     code = _macrosentence_rep(code)
 
+    ## assign initial values to input variables as new assignments
     for index, value in enumerate(args, start=1):
         code = f"X{index}={value};" + code
 
+    ## variable initialization to avoid error from nested call to eval
     locals_dict = {"X1": 0, "X2": 0, "X3": 0}
+    ## run Python script (simulate WHILE program with input variables)
     exec(_to_python(code), globals(), locals_dict)
     #exec(_to_python(code), {}, locals_dict)
 
@@ -51,8 +64,13 @@ def f_emulation(whileprogram: str, *args: int) -> int:
 
 
 def _macrosentence_rep(code: str) -> str:
+    ## add "f_emulation" to macrosentence calls
+    ## e.g. replaces
+    ##   X1 = addition(13, 8)
+    ##   X1 = f_emulation("addition", 13, 8)
     """Add f_emulation to macro sentence calls."""
     positions = [m.start() for m in re.finditer(r"\(", code)]
+    ## replace from the last call to the first, so the replacement does not interfere
     for start in reversed(positions):
         prefix = code[:start]
         assign_index = prefix.rfind("=")

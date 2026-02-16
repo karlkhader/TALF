@@ -1,9 +1,10 @@
 """
-Generate a rule of a given type.
+Make a rule of a given type (0..3), which is not of the next type.
+Optionally, non-terminal and terminal alphabets can be provided as arguments.
 
 Examples:
-    >>> make_rule(2)
-    >>> make_rule(0, N="ABC", T="01")
+    >>> rule = make_rule(2)
+    >>> rule = make_rule(0, N='ABC', T='01')
 """
 
 from __future__ import annotations
@@ -29,18 +30,22 @@ def make_rule(
     show_rule: bool = True,
 ) -> Rule:
     """Return a rule of the given type (0..3)."""
+    ## separator character in a rule
     separator = "->"
     epsilon = "ε"
 
     if N is None:
+        # non-terminal alphabet
         N = [chr(code) for code in range(ord("A"), ord("G") + 1)]
     if T is None:
+        # terminal alphabet
         T = [chr(code) for code in range(ord("a"), ord("g") + 1)]
 
     N_str = "".join(N)
     T_str = "".join(T)
 
     if type_rule == 1:
+        # made appart to make it more probable that alpha or beta are not empty
         alpha = random_string("V*", N_str, T_str)
         beta = random_string("V*", N_str, T_str)
         alpha = "" if alpha == epsilon else alpha

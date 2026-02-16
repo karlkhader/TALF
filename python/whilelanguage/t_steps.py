@@ -17,12 +17,15 @@ from .size import size
 
 def t_steps(whileprogram: str, inputvariables: List[int]) -> int:
     """Return the number of steps until the program halts."""
+    ## steps to check by user
     time_to_check = 1000
     steps = 0
     halting_line = size(whileprogram) + 1
+    ## initial configuration
     configuration = cal(whileprogram, inputvariables, 0)
 
     while configuration[0] != halting_line:
+        ## check if user cancelling in case of possible infinite loop
         steps += 1
         if steps % time_to_check == 0:
             # In Octave this pauses for user input; here we just continue.

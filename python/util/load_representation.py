@@ -1,4 +1,43 @@
-"""Load set representations from a JSON database."""
+"""Load set representations from a JSON database.
+
+load the representation of a set (either a language or a function) from a JSON file
+
+Example of a finite automata database:
+[
+  {
+    "name" : "a*bb*aa*",
+    "representation" : {
+      "K" : ["q0", "q1", "q2", "q3"],
+      "A" : ["a", "b"],
+      "s" : "q0",
+      "F" : ["q2"],
+      "t" : [["q0", "a", "q0"],
+             ["q0", "b", "q1"],
+             ["q1", "a", "q2"],
+             ["q1", "b", "q1"],
+             ["q2", "a", "q2"],
+             ["q2", "b", "q3"],
+             ["q3", "a", "q3"],
+             ["q3", "b", "q3"]]
+      }
+  },
+  {
+    "name" : "aa*bb*",
+    "representation" : {
+      "K" : ["q0", "q1", "q2"],
+      "A" : ["a", "b"],
+      "s" : "q0",
+      "F" : ["q2"],
+      "t" : [["q0", "a", "q1"],
+             ["q1", "a", "q1"],
+             ["q1", "b", "q2"],
+             ["q2", "b", "q2"]]
+      }
+  }
+]
+
+automaton = loadrepresentation(automatadatabasename, automatonname)
+"""
 
 from __future__ import annotations
 
@@ -29,4 +68,5 @@ def load_representation(set_database_name: str, set_name: str) -> Optional[Any]:
         if current_set.get("name") == set_name:
             return current_set.get("representation")
 
+    # return empty string and error message if not found
     return None

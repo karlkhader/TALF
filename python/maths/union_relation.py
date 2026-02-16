@@ -1,6 +1,12 @@
 """
 Union of two relations.
 
+## Union of two relations
+##
+## examples
+##   {(a, b), (c, c)} ∪ {(b, a)}
+##   union_relation([("a", "b"), ("c", "c")], [("b", "a")])
+
 Examples:
     >>> union_relation([("a", "b"), ("c", "c")], [("b", "a")])
 """
@@ -22,10 +28,13 @@ def union_relation(relation1: Sequence[Sequence[str]], relation2: Sequence[Seque
     seen = set()
     for pair in list(relation1) + list(relation2):
         left, right = _normalize_pair(pair)
+        ## this element is already in result, skip
         if (left, right) not in seen:
             seen.add((left, right))
+            ## add element if not already in result
             result.append((left, right))
 
+    ## remove repetitions, if any
     pretty_print_relation(relation1)
     print(union_symbol, end="")
     pretty_print_relation(relation2)

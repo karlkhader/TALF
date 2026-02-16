@@ -1,5 +1,9 @@
 """
-Gödel numbering for vectors of numbers (ℕ* -> ℕ).
+Godel numbering for vectors of numbers of arbitrary length (ℕ* -> ℕ)
+
+example
+  >>> godelencoding(4, 10, 2)
+  23863684
 
 Example:
     >>> godelencoding(4, 10, 2)
@@ -14,5 +18,8 @@ from .cantorencoding import cantorencoding
 def godelencoding(*args: int) -> int:
     """Encode a vector of numbers using Gödel numbering."""
     if len(args) == 0:
+        ## case of empty vector
         return 0
-    return int(cantorencoding(len(args) - 1, cantorencoding(*args)) + 1)
+    else:
+        ## length of the vector plus Cantor encoding of the vector
+        return int(cantorencoding(len(args) - 1, cantorencoding(*args)) + 1)

@@ -1,6 +1,8 @@
 """
 Mathematical function computed by a WHILE program.
 
+In case of error in the WHILE code, it raises the wrong Octave code.
+
 Example:
     >>> f_function("(1, X2≔X1; while X2≠0 do X1≔X1+1; X2≔X2-1 od)", [10])
     20

@@ -1,4 +1,7 @@
-"""Convert a context-free grammar (CFG) to a nondeterministic PDA."""
+"""Convert a context-free grammar (CFG) to a nondeterministic PDA.
+
+Finds an NPA equivalent to a given CFG.
+"""
 
 from __future__ import annotations
 
@@ -28,6 +31,12 @@ def cfg_to_npa(grammar: Grammar) -> Automaton:
         "t": [],
     }
 
+    # STATES
+    # STRING ALPHABET
+    # STACK ALPHABET
+    # INITIAL STATE
+    # FINAL STATE
+    # TRANSITION RELATION
     # Initial transition pushes the start symbol.
     automaton["t"].append([["q0", "ε", "ε"], ["q1", grammar["S"]]])
 

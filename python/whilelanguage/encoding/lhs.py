@@ -13,9 +13,6 @@ example
   >>> lhs(37)
   3
 
-Example:
-    >>> lhs(37)
-    3
 """
 
 from __future__ import annotations

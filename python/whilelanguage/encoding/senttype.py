@@ -8,9 +8,6 @@ example
   >>> senttype(z)
   4
 
-Example:
-    >>> senttype(9325236374)
-    4
 """
 
 from __future__ import annotations

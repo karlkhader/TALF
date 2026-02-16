@@ -1,10 +1,6 @@
 """
 Encoding of a while code (CODE -> ℕ)
 
-example
-  >>> code2n("X1:=0;while X1!=0 do X1:=0 od")
-  134
-
 Example:
     >>> code2n("X1:=0;while X1!=0 do X1:=0 od")
     134

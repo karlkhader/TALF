@@ -1,10 +1,6 @@
 """
 Numbering of an individual sentence
 
-example
-  >>> n2sent(192509)
-  'while X2=0 do X2≔X2+1 od'
-
 Example:
     >>> n2sent(192509)
     'while X2=0 do X2≔X2+1 od'

@@ -1,8 +1,9 @@
 # Python port (work in progress)
 
-This directory mirrors the thematic structure in `software/` with Python modules.
-The goal is to preserve a 1:1 mapping folder-by-folder so examples remain easy to
-locate while transitioning from GNU Octave to Python.
+This repository comprises **scripts** (Python code) to simulate several models explained 
+in the subject of Theory of Automata and Formal Languages.
+
+You can freely download and modify the Python code.
 
 ## Status
 
@@ -20,3 +21,13 @@ locate while transitioning from GNU Octave to Python.
 - `recursivefunctions/`: recursive function expressions, evaluation, and WHILE-EXT output.
 
 Future folders will be added following the same naming and layout convention.
+
+## How to
+
+In order to run the scripts, you have to import the module you want to work with. For example:
+
+`from python.regularexpressions import *`
+
+`from python.whilelanguage.encoding import *`
+
+Then, you can run the examples presented inside each script.

@@ -1,10 +1,6 @@
 """
 Numbering of while programs (WHILE -> ℕ)
 
-example
-  >>> while2n(1, "while X1≠0 do X1≔0 od")
-  134
-
 Example:
     >>> while2n(1, "while X1≠0 do X1≔0 od")
     134

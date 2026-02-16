@@ -14,9 +14,6 @@ example
   >>> rhs(37)
   2
 
-Example:
-    >>> rhs(37)
-    2
 """
 
 from __future__ import annotations

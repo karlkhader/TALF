@@ -4,10 +4,6 @@ godeldecoding(z, k) returns the kth element of the tuple encoded by z
 godeldecoding(z, 0) returns the length of the tuple encoded by z
 godeldecoding(z)    returns the tuple encoded by z
 
-example
-  >>> godeldecoding(1258489)
-  [2, 2, 43]
-
 Example:
     >>> godeldecoding(1258489)
     [2, 2, 43]

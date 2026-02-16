@@ -1,10 +1,6 @@
 """
 Bijection ℕ -> CODE
 
-example
-  >>> n2code(4)
-  'X1≔X1; X1≔0'
-
 Example:
     >>> n2code(4)
     'X1≔X1; X1≔0'

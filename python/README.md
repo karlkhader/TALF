@@ -7,18 +7,18 @@ You can freely download and modify the Python code.
 
 ## Modules
 
-- `util/`: initial helpers ported from Octave (random string generation, JSON
+- [`util/`](util/README.md): initial helpers ported from Octave (random string generation, JSON
   representation loader, balanced symbol labeling).
-- `automata/`: initial finite automaton, pushdown automaton, CFG-to-NPA,
+- [`automata/`](automata/README.md): initial finite automaton, pushdown automaton, CFG-to-NPA,
   random automaton generation, DOT formatting, and inaccessible state removal
   utilities.
-- `grammar/`: grammar utilities (pretty printing, rule typing, rule/grammar
+- [`grammar/`](grammar/README.md): grammar utilities (pretty printing, rule typing, rule/grammar
   generation, production), plus L-system development and drawing.
-- `whilelanguage/`: WHILE language utilities (execution, complexity, encoding).
-- `turingmachine/`: Turing machine simulators, printers, and generators.
-- `regularexpressions/`: regular-expression enumeration and matching helpers.
-- `maths/`: relations utilities (union, powers, printing).
-- `recursivefunctions/`: recursive function expressions, evaluation, and WHILE-EXT output.
+- [`whilelanguage/`](whilelanguage/README.md): WHILE language utilities (execution, complexity, encoding).
+- [`turingmachine/`](turingmachine/README.md): Turing machine simulators, printers, and generators.
+- [`regularexpressions/`](regularexpressions/README.md): regular-expression enumeration and matching helpers.
+- [`maths/`](maths/README.md): relations utilities (union, powers, printing).
+- [`recursivefunctions/`](recursivefunctions/README.md): recursive function expressions, evaluation, and WHILE-EXT output.
 
 Future folders will be added following the same naming and layout convention.
 

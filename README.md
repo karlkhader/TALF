@@ -3,6 +3,6 @@
 This project comprises **material** for the classroom and exams, as 
 well as **scripts** (Python code) to simulate several models explained in the subject of Theory of Automata and Formal Languages.
 
-You can freely download and modify the source code.
+You can freely download and modify the source code. You need to run the code in a Python environment.
 
-You need to run the code in a Python environment.
+This repository is based on the work done by Prof. Francisco Vico and his Octave repository: https://bitbucket.org/umafoss/talfuma

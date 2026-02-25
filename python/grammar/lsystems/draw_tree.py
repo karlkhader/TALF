@@ -21,7 +21,7 @@ def draw_tree(string: str, *, output_path: str | None = None) -> None:
     except ImportError as exc:
         raise ImportError("matplotlib is required to draw L-systems.") from exc
 
-    matplotlib.use("Agg")
+    #matplotlib.use("Agg")
     ## width of lines
     line_width = 0.5
     ## rotation angle in degrees
@@ -100,6 +100,8 @@ def draw_tree(string: str, *, output_path: str | None = None) -> None:
     ## show bounding box only
     ax.set_xlim(minx, maxx)
     ax.set_ylim(miny, maxy)
+
+    plt.show()
 
     if output_path:
         fig.savefig(output_path, bbox_inches="tight")

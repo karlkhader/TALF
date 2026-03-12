@@ -44,36 +44,34 @@ def is_regular_expression(alphabet: str, expression: str) -> bool:
     if expression.startswith("(") and expression.endswith(")"):
         ## remove external parenthesis
         inner = expression[1:-1]
-        ## find balanced parenthesis
+
+        ## find balanced parenthesis and top-level unions
         depth = 0
         for idx, char in enumerate(inner):
             if char == "(":
                 depth += 1
             elif char == ")":
                 depth -= 1
+                if depth < 0:
+                    return False
             elif char == "+" and depth == 0:
                 ## it is a union
                 first_expression = inner[:idx]
                 second_expression = inner[idx + 1 :]
-                ## there are no extra symbols in the expression
                 return is_regular_expression(alphabet, first_expression) and is_regular_expression(
                     alphabet, second_expression
                 )
 
-        ## case of parentheses not matching or nested expressions
-        if "(" in inner or ")" in inner:
+        if depth != 0:
             return False
 
-        ## it is a concatenation
-        singlesymbols = [idx for idx, char in enumerate(inner) if char in extendedalphabet]
-        if len(singlesymbols) == 2:
-            ## only two symbols are expected
-            first_expression = inner[singlesymbols[0] : singlesymbols[1]]
-            second_expression = inner[singlesymbols[1] :]
-            if len(first_expression) + len(second_expression) == len(inner):
-                ## there are no extra symbols in the expression
-                return is_regular_expression(alphabet, first_expression) and is_regular_expression(
-                    alphabet, second_expression
-                )
+        ## it is a concatenation: split inner into alpha beta
+        for split in range(1, len(inner)):
+            first_expression = inner[:split]
+            second_expression = inner[split:]
+            if is_regular_expression(alphabet, first_expression) and is_regular_expression(
+                alphabet, second_expression
+            ):
+                return True
 
     return False

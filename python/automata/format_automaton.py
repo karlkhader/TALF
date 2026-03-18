@@ -4,11 +4,10 @@ optional: outputfilename
 
 Generates a Dot/Graphviz representation of the automaton.
 
-examples
-  formatautomaton(randomautomaton({'a', 'b', 'c'}, 4, 'NPDA'))
-  fa = randomautomaton({'0', '1'}, 5, 'NDA'); formatautomaton(fa, 'DOT_file');
-  formatautomaton('0^n1^2n')
-  formatautomaton('a*bb*aa*')
+Examples:
+    >>> from python.automata import random_automaton
+    >>> fa = random_automaton(["0", "1"], 5)
+    >>> format_automaton(fa)
 """
 
 from __future__ import annotations
@@ -36,10 +35,10 @@ def format_automaton(automaton: Union[str, Automaton], output_filename: Optional
         description = automaton
         # automaton stored in a JSON file, go fetch it
         # check if in finite automaton database
-        automaton = load_representation("finiteautomata", description)
+        automaton = load_representation("python/automata/finiteautomata", description)
         if automaton is None:
             # check if in pushdown automaton database
-            automaton = load_representation("pushdownautomata", description)
+            automaton = load_representation("python/automata/pushdownautomata", description)
         if automaton is None:
             raise ValueError(f"Automaton '{description}' not found in databases.")
 

@@ -25,9 +25,9 @@ in a JSON file, like this:
  formatoption is either undefined or "LaTeX" for LaTeX-formatted output.
 
 
-For example:
-
-   >> finiteautomaton("aa*bb*", "ab")
+Examples:
+   >>> from python.automata import finite_automaton
+   >>> finite_automaton("aa*bb*", "ab")
 
    M = ( {q0, q1, q2}, {a, b}, {(q0, a, q1), (q1, a, q1), (q1, b, q2), (q2, b, q2)}, q0, {q0, q1, q2} )
 
@@ -36,8 +36,9 @@ For example:
    (q0, ab) ⊢ (q1, b) ⊢ (q2, ε)
 
    w ∈ 𝓛(M)
+   1
 
-   >> finiteautomaton("aa*bb*", "ab", "LaTeX")
+   >>> finite_automaton("aa*bb*", "ab", "LaTeX")
 """
 
 from __future__ import annotations
@@ -240,3 +241,4 @@ def _print_automaton(
             f"{open_bracket}{final_states}{close_bracket})"
         )
         print(f"\nw = {input_string}\n")
+

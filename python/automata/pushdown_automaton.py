@@ -29,39 +29,41 @@ The automaton is defined in a definition file with JSON format, like this:
      }
  }
 
-Examples
+Examples:
+    >>> from python.automata import cfg_to_npa, pushdown_automaton
+    >>> grammar = {"N": ["S"], "T": ["0", "1"], "P": [["S", "01"]], "S": "S"}
+    >>> npa = cfg_to_npa(grammar)
+    >>> pushdown_automaton(npa, "01")
 
-   >> pushdownautomaton("|w|0=|w|1", "00011");
-   
+    M = ({q0, q1}, {0, 1}, {0, 1, S}, {((q0, ε, ε), (q1, S)), ((q1, ε, S), (q1, 01)), ((q1, 0, 0), (q1, ε)), ((q1, 1, 1), (q1, ε))}, q0, {q1})
+
+    w = 01
+
+    (q0, 01, ε) ⊢ (q1, 01, S) ⊢ (q1, 01, 01) ⊢ (q1, 1, 1) ⊢ (q1, ε, ε)
+
+    w ∈ 𝓛(M)
+    'accept'
+
+    >>> pushdown_automaton("|w|0=|w|1", "00011")
+
    M = ({q0}, {0, 1}, q0, {q0}, {((q0, 0, ε), (q0, 0)), ((q0, 1, ε), (q0, 1)), ((q1, 0, 1), (q0, ε)), ((q0, 1, 0), (q0, ε))})
-   
+
    w = 00011
-   
+
    (q0, 00011, ε) ⊢ (q0, 0011, 0) ⊢ (q0, 011, 00) ⊢ (q0, 11, 000) ⊢ (q0, 1, 00) ⊢ (q0, ε, 0)
 
    w ∉ 𝓛(M) (blocked computation)
 
 
-   >> pushdownautomaton("0^n1^n", "0011", "accept");
+   >>> pushdown_automaton("0^n1^n", "0011", "accept")
 
    M = ({q0, q1}, {0, 1}, q0, {q1}, {((q0, 0, ε), (q0, 0)), ((q0, 1, 0), (q1, ε)), ((q1, 1, 0), (q1, ε))})
 
    w = 0011
-   
+
    (q0, 0011, ε) ⊢ (q0, 011, 0) ⊢ (q0, 11, 00) ⊢ (q1, 1, 0) ⊢ (q1, ε, ε)
-   
+
    w ∈ 𝓛(M)
-
-
-   >> pushdownautomaton("singleEstate", "a", "blocked", "LaTeX");
-
-   $M = (\{q_0\}, \{a, b\}, \{a, b\}, q_0, \{q0\}, \{((q0, a, ε), (q0, a)), ((q0, b, a), (q0, ε))\})$
-
-   $w = a$
-
-   $(q0, a, \varepsilon) \vdash (q0, \varepsilon, a)$
-
-   w ∉ 𝓛(M) (blocked computation)
 """
 
 from __future__ import annotations
@@ -352,3 +354,4 @@ def _print_automaton(
             f"{automaton['s']}, {{{finals}}})"
         )
         print(f"\nw = {input_string}\n")
+

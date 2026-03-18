@@ -17,10 +17,13 @@ defined in a JSON file (for further use), like this:
            ["q2", "b", "q2"]]
   }
 
-examples
-  randomautomaton({'0', '1'}, 5)
-  randomautomaton({'a', 'b', 'c'}, 8, 'NFA')
-  randomautomaton({'|'}, 10, 'DFA', 0.3)
+Examples:
+    >>> random_automaton(["0", "1"], 5)
+    {'K': ..., 'A': ..., 's': 'q0', 'F': ..., 't': ...}
+    >>> random_automaton(["a", "b", "c"], 8, {"automaton_type": "NFA"})
+    {'K': ..., 'A': ..., 's': 'q0', 'F': ..., 't': ...}
+    >>> random_automaton(["|"], 10, {"automaton_type": "DFA", "probability_final_state": 0.3})
+    {'K': ..., 'A': ..., 's': 'q0', 'F': ..., 't': ...}
 """
 
 from __future__ import annotations
@@ -43,13 +46,16 @@ class RandomAutomatonOptions:
 def random_automaton(
     alphabet: Sequence[str],
     number_states: int,
-    options: RandomAutomatonOptions | None = None,
+    options: RandomAutomatonOptions | Dict[str, object] | None = None,
 ) -> Dict[str, object]:
     """Generate a random DFA/NFA/NPDA automaton description."""
     if number_states < 1:
         raise ValueError("number_states must be >= 1")
 
-    options = options or RandomAutomatonOptions()
+    if options is None:
+        options = RandomAutomatonOptions()
+    elif isinstance(options, dict):
+        options = RandomAutomatonOptions(**options)
     automaton_type = options.automaton_type
 
     # determine if DFA (default), NFA or NPDA

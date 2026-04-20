@@ -1,5 +1,5 @@
 """
-randomturingmachine(numberstates, alphabet, emptysymbol, randomseed)
+random_turingmachine(numberstates, alphabet, emptysymbol, randomseed)
 
 Generates a table for a random Turing Machine
 
@@ -20,8 +20,14 @@ Examples:
     
     (q0, *, 1) ⊢ (q2, **, 2) ⊢ (q1, *|*, 2) ⊢ (q0, *|*, 2) ⊢ (q1, *|*, 1) ⊢ (q0, *|*, 2) ...
 
-    >>> savejson("matrix", random_turingmachine(2, "|"), "test.json")
-    >>> turing_machine("test", "*|||*")
+    >>> import json
+    >>> with open("test.json", "w", encoding="utf-8") as handle:
+    ...     json.dump(
+    ...         [{"name": "test", "representation": {"matrix": random_turingmachine(2, "|")}}],
+    ...         handle,
+    ...         indent=2,
+    ...     )
+    >>> turing_machine("test", "*|||*", database_path="test")
 """
 
 from __future__ import annotations

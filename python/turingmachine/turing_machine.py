@@ -71,13 +71,14 @@ def turing_machine(
     turingmachinename: Union[str, Matrix],
     tape: str,
     outputformat: str = "table",
+    database_path: str = "python/turingmachine/turingmachines"
 ) -> Tuple[Tape, int]:
     """Simulate a deterministic Turing machine and return tape and head position."""
     transitionsymbol = "⊢"
 
     ## get the machine elements and print it out
     states, alphabet, instructionfunction, nextstatefunction, initialstate, emptysymbol, matrix = pretty_print(
-        turingmachinename, outputformat
+        turingmachinename, outputformat, database_path
     )
 
     ## define initial head position

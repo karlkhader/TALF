@@ -36,7 +36,7 @@ Matrix = List[List[str]]
 def pretty_print(
     turingmachinename: Union[str, Matrix],
     outputformat: str = "table",
-    *,
+    #*,
     database_path: str = "python/turingmachine/turingmachines",
 ) -> Tuple[List[str], List[str], List[str], List[str], str, str, Matrix]:
     """Print a formatted table and return machine components."""

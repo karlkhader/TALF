@@ -2,17 +2,18 @@ r"""Simulate pushdown automata computations.
 
 Computation for a given pushdown automaton and input string.
 
-  automatonname : name of the automaton as the label in the definition file
-  inputstring   : string to be accepted or rejected
-  desiredoutput : result to be expected, since the NPA is non-deterministic
+  automaton      : name of the automaton as the label in the definition file
+  input_string   : string to be accepted or rejected
+  desired_output : result to be expected, since the NPA is non-deterministic
                   'any'      anyone of the others (default option)
                   'accept'   accepted string
                   'reject'   rejected string in non final state, or
                   'blocked'  rejected string with blocked computation.
-  formatoption  : how the output is generated
+  format_option  : how the output is generated
                   'text'     ASCII (default option)
                   'LaTeX'    LaTeX code for LN
-  randomseed    : seed for the random numbers generator
+  random_seed    : seed for the random numbers generator
+  return_computation : whether to return the computation as a list of configurations, in addition to the outcome
 
 The automaton is defined in a definition file with JSON format, like this:
 

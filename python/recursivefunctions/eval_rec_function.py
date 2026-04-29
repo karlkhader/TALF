@@ -86,7 +86,7 @@ def eval_rec_function(recfunction: str, *args: int) -> int:
         ## function defined by minimization ================================
         ## extract the function to be minimized
         ## (μ takes the first two characters and the [ ] are also to be discarded)
-        minimized = recfunction[3:-1]
+        minimized = recfunction[2:-1]
         sys.stderr.write("\n")
         t = 0
         while eval_rec_function(minimized, *args, t) != 0:

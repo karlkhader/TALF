@@ -32,7 +32,7 @@ def code2n(whilecode: str) -> int:
         ## add assignments before the loop, and the loop itself
         for head, tail in loop:
             listsentence.extend(_split_sentences(whilecode[firstchar:head]))
-            listsentence.append(whilecode[head:tail])
+            listsentence.append(whilecode[head:tail + 1].strip())
             firstchar = tail + 1
         ## add assignments after the last loop
         listsentence.extend(_split_sentences(whilecode[loop[-1][1] + 1 :]))
@@ -44,7 +44,7 @@ def code2n(whilecode: str) -> int:
 
 
 def _split_sentences(text: str) -> List[str]:
-    return [segment for segment in text.split(";") if segment]
+    return [segment.strip() for segment in text.split(";") if segment.strip()]
 
 
 def _first_level_loop(whilecode: str, loophead: str, looptail: str) -> List[Tuple[int, int]]:

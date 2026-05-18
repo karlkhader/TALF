@@ -2,7 +2,7 @@
 Numbering of an individual sentence
 
 Example:
-    >>> sent2n("while X1≠0 do X1≔X1-1; X2≔X2+1 od")
+    >>> sent2n("while X1!=0 do X1:=X1-1; X2:=X2+1 od")
     9325236374
 """
 
@@ -13,14 +13,23 @@ import re
 from .cantorencoding import cantorencoding
 
 
+ASSIGNMENT_SYMBOLS = (":=", "\u2254")
+COMPARISON_SYMBOLS = ("!=", "\u2260")
+
+
+def _normalize_sentence(sentence: str) -> str:
+    """Normalize accepted WHILE syntax to a canonical ASCII form."""
+    sentence = re.sub(r"\s+", "", sentence)
+    for symbol in ASSIGNMENT_SYMBOLS[1:]:
+        sentence = sentence.replace(symbol, ASSIGNMENT_SYMBOLS[0])
+    for symbol in COMPARISON_SYMBOLS[1:]:
+        sentence = sentence.replace(symbol, COMPARISON_SYMBOLS[0])
+    return sentence
+
+
 def sent2n(sentence: str) -> int:
     """Encode a WHILE sentence into a number."""
-    ## erase in-between spaces
-    sentence = sentence.replace(" ", "")
-    ## replace assignment symbol
-    sentence = sentence.replace(":=", "≔")
-    ## replace comparison symbol
-    sentence = sentence.replace("!=", "≠")
+    sentence = _normalize_sentence(sentence)
 
     ## loop delimiters
     loophead = "do"
@@ -42,16 +51,16 @@ def sent2n(sentence: str) -> int:
             sentence[digits[1].end() :]
         )
         ## encode the assignment
-        if sentencepattern == "X≔":
+        if sentencepattern == "X:=":
             ## type 0 assignment
             return 5 * (firstnumber - 1)
-        if sentencepattern == "X≔X":
+        if sentencepattern == "X:=X":
             ## type 1 assignment
             return 5 * cantorencoding(firstnumber - 1, secondnumber - 1) + 1
-        if sentencepattern == "X≔X+1":
+        if sentencepattern == "X:=X+1":
             ## type 2 assignment
             return 5 * cantorencoding(firstnumber - 1, secondnumber - 1) + 2
-        if sentencepattern == "X≔X-1":
+        if sentencepattern == "X:=X-1":
             ## type 3 assignment
             return 5 * cantorencoding(firstnumber - 1, secondnumber - 1) + 3
     else:
